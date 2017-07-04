@@ -9,11 +9,15 @@
   </head>
   <body>
     <div id="app">
-      <nav>
-        <router-link to="/">Home</router-link>
-        <router-link to="/projects">Projects</router-link>
-        <router-link to="/about">About</router-link>
-      </nav>
+      <navbar>
+        <container>
+          <navbar-list>
+            <navbar-item to="/">Home</navbar-item>
+            <navbar-item to="/projects">Projects</navbar-item>
+            <navbar-item to="/about">About</navbar-item>
+          </navbar-list>
+        </container>
+      </navbar>
       <main>
         <router-view></router-view>
       </main>

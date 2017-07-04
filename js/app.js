@@ -6,17 +6,10 @@ function onLoad(cb) {
 // These can be imported from other files
 const Home = { template: `
 <div>
-  <masthead>
-    <display level="3">Welcome to Dorp!</display>
-    <lead>SAMPLE TEXT</lead>
-  </masthead>
   <container>
-    <row>
-      <column span="100">
-        <h3>What is Dorp?</h3>
-        <p>Dorp is a website.</p>
-      </column>
-    </row>
+    <section class="header">
+      <h2 class="title">Welcome to Dorp!</h2>
+    </section>
   </container>
 </div>
   ` }
@@ -53,31 +46,10 @@ const router = new VueRouter({
   routes: routes // short for `routes: routes`
 })
 
-Vue.component('masthead', {
-  template: `<div class="masthead"><slot></slot></div>`
-})
-
-Vue.component('lead', {
-  template: `<p class="lead"><slot></slot></p>`
-})
-
-Vue.component('container', {
-  template: `<div class="container"><slot></slot></div>`
-})
-
-Vue.component('display', {
-  props: ['level'],
-  template: `<div :class="'display-'+level"><slot></slot></div>`,
-})
-
-Vue.component('row', {
-  template: `<div class="row"><slot></slot></div>`,
-})
-
-Vue.component('column', {
-  props: ['span'],
-  template: '<div class="column" :style="`flex:0 0 ${span}%`"><slot></slot></div>',
-})
+Vue.component('container', { template: `<div class="container"><slot></slot></div>` });
+Vue.component('navbar', { template: `<nav class="navbar"><slot></slot></nav>` });
+Vue.component('navbar-list', { template: `<ul class="navbar-list"><slot></slot></ul>` });
+Vue.component('navbar-item', { props: ['to'], template: `<li class="navbar-item"><router-link class="navbar-link" :to="to"><slot></slot></router-link></li>` });
 
 // 4. Create and mount the root instance.
 // Make sure to inject the router with the router option to make the
