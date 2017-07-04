@@ -1,30 +1,110 @@
 body {
-  font-family: "Roboto", "Arial", sans-serif;
-  margin: 0;
+    font-family: "Roboto", "Arial", sans-serif;
+    margin: 0;
 }
-
-*, *:before, *:after {
-  box-sizing: inherit;
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }
-
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
-
 nav {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  background: #212121;
-  padding: 0.5em 0.5em 0.5em 2em;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: #212121;
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
 }
-
 nav a {
-  text-decoration: none;
-  color: #eeeeee;
-  padding-right: 1em;
+    text-decoration: none;
+    color: #eeeeee;
+    padding-right: 1em;
 }
-
-main {
-  padding: 1em 2em;
+.container {
+    padding: 1rem 2rem;
+}
+.masthead {
+    text-align: center;
+    padding: 6rem;
+    background: url(/images/masthead-home.jpg);
+    color: white;
+}
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit
+}
+.h1,
+h1 {
+    font-size: 2.5rem
+}
+.h2,
+h2 {
+    font-size: 2rem
+}
+.h3,
+h3 {
+    font-size: 1.75rem
+}
+.h4,
+h4 {
+    font-size: 1.5rem
+}
+.h5,
+h5 {
+    font-size: 1.25rem
+}
+.h6,
+h6 {
+    font-size: 1rem
+}
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300
+}
+.display-1 {
+    font-size: 6rem;
+    font-weight: 300;
+    line-height: 1.1
+}
+.display-2 {
+    font-size: 5.5rem;
+    font-weight: 300;
+    line-height: 1.1
+}
+.display-3 {
+    font-size: 4.5rem;
+    font-weight: 300;
+    line-height: 1.1
+}
+.display-4 {
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1.1
+}
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, .1)
+}
+.small,
+small {
+    font-size: 80%;
+    font-weight: 400
 }

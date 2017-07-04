@@ -4,9 +4,34 @@ function onLoad(cb) {
 
 // 1. Define route components.
 // These can be imported from other files
-const Home = { template: '<div>1</div>' }
-const Projects = { template: '<div>2</div>' }
-const About = { template: '<div>3</div>' }
+const Home = { template: `
+<div>
+  <masthead>
+    <display level="3">Welcome to Dorp!</display>
+    <lead>SAMPLE TEXT</lead>
+  </masthead>
+  <container>
+    <row>
+      <column span="100">
+        <h3>What is Dorp?</h3>
+        <p>Dorp is a website.</p>
+      </column>
+    </row>
+  </container>
+</div>
+  ` }
+const Projects = { template: `
+<div>
+  <container>
+  </container>
+</div>
+  ` }
+const About = { template: `
+<div>
+  <container>
+  </container>
+</div>
+  ` }
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
@@ -26,6 +51,32 @@ const router = new VueRouter({
   mode: "history",
   hashbang: false,
   routes: routes // short for `routes: routes`
+})
+
+Vue.component('masthead', {
+  template: `<div class="masthead"><slot></slot></div>`
+})
+
+Vue.component('lead', {
+  template: `<p class="lead"><slot></slot></p>`
+})
+
+Vue.component('container', {
+  template: `<div class="container"><slot></slot></div>`
+})
+
+Vue.component('display', {
+  props: ['level'],
+  template: `<div :class="'display-'+level"><slot></slot></div>`,
+})
+
+Vue.component('row', {
+  template: `<div class="row"><slot></slot></div>`,
+})
+
+Vue.component('column', {
+  props: ['span'],
+  template: '<div class="column" :style="`flex:0 0 ${span}%`"><slot></slot></div>',
 })
 
 // 4. Create and mount the root instance.
