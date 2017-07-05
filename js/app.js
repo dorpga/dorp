@@ -4,37 +4,35 @@ function onLoad(cb) {
 
 // 1. Define route components.
 // These can be imported from other files
-const Home = { template: `
-<div>
-  <container>
-    <section class="header">
-      <h2 class="title">Welcome to Dorp!</h2>
-    </section>
-  </container>
-</div>
-  ` }
-const Projects = { template: `
-<div>
-  <container>
-  </container>
-</div>
-  ` }
-const About = { template: `
-<div>
-  <container>
-  </container>
-</div>
-  ` }
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
 // either be an actual component constructor created via
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
-const routes = [
-  { path: '/', component: Home },
-  { path: '/projects', component: Projects },
-  { path: '/about', component: About }
+const routes = [{
+    path: '/',
+    component: {
+      template: '#page-home'
+    }
+  },
+  {
+    path: '/products',
+    component: {
+      template: '#page-products'
+    }
+  },
+  {
+    path: '/about',
+    component: {
+      template: '#page-about'
+    }
+  }, {
+    path: '/products/framework',
+    component: {
+      template: '#page-products-framework'
+    }
+  }
 ]
 
 // 3. Create the router instance and pass the `routes` option
@@ -46,16 +44,56 @@ const router = new VueRouter({
   routes: routes // short for `routes: routes`
 })
 
-Vue.component('container', { template: `<div class="container"><slot></slot></div>` });
-Vue.component('navbar', { template: `<nav class="navbar"><slot></slot></nav>` });
-Vue.component('navbar-list', { template: `<ul class="navbar-list"><slot></slot></ul>` });
-Vue.component('navbar-item', { props: ['to'], template: `<li class="navbar-item"><router-link class="navbar-link" :to="to"><slot></slot></router-link></li>` });
+Vue.component('container', {
+  template: `<div class="container"><slot></slot></div>`
+});
+Vue.component('navbar', {
+  template: `<nav class="navbar"><slot></slot></nav>`
+});
+Vue.component('navbar-list', {
+  template: `<ul class="navbar-list"><slot></slot></ul>`
+});
+Vue.component('navbar-item', {
+  props: ['to'],
+  template: '<li class="navbar-item"><router-link class="navbar-link" :to="to"><slot></slot></router-link></li>'
+});
+Vue.component('row', {
+  template: `<div class="row"><slot></slot></div>`
+});
+Vue.component('column', {
+  props: ['span'],
+  template: '<div :class="`${span} columns`"><slot></slot></div>'
+});
+Vue.component('dorp-products', {
+  template: '#partial-dorp-products',
+  data: function() {
+    return {
+      products: [{
+          id: 'framework',
+          name: 'DorpFramework',
+          description: 'The Dorp Web Framework',
+          link: '/products/framework'
+        },
+        {
+          id: 'dom',
+          name: 'DorpDOM',
+          description: 'A Simple DOM Utility',
+          link: '/products/dom'
+        }
+      ]
+    }
+  }
+});
+Vue.component('dorp-product', {
+  props: ['product'],
+  template: '#component-dorp-product'
+});
 
 // 4. Create and mount the root instance.
 // Make sure to inject the router with the router option to make the
 // whole app router-aware.
 const app = new Vue({
-  router
+  router: router
 }).$mount('#app')
 
 // Now the app has started!
