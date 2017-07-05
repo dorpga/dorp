@@ -681,10 +681,6 @@ there.
   }
 }
 
-
-/* Larger than tablet */
-
-@media (min-width: 750px) {
   /* Navbar */
   .navbar+.docs-section {
     border-top-width: 0;
@@ -814,7 +810,6 @@ there.
   .popover-link:hover, .popover-item:first-child .popover-link:hover:after {
     border-bottom-color: #33C3F0;
   }
-}
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s
