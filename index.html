@@ -6,12 +6,15 @@
   <title>Dorp</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Raleway:400,300,600' type='text/css'>
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/app.css">
 
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script src="https://unpkg.com/vue-markdown/dist/vue-markdown.js"></script>
+
 
   <script type="text/x-template" id="page-home">
     <div>
@@ -46,25 +49,35 @@
           <h1 class="title">About</h1>
         </section>
         <section id="content">
+            <h3 class="text-center">Powered By</h3>
+            <mediaitem title="VueJS" description="VueJS is the main web framework used for Dorp." link="https://vuejs.org" image="/images/vuejs.png"></mediaitem>
+            <mediaitem title="Skeleton CSS" description="Skeleton CSS is the CSS Framework used for Dorp." link="https://getskeleton.com" image="/images/skeletoncss.png"></mediaitem>
+            <mediaitem title="Font Awesome" description="Dorp uses Font Awesome for icons." link="https://fontawesome.io" image="/images/fontawesome.png"></mediaitem>
+            <mediaitem title="Google Fonts" description="Google Fonts provides the fonts used for Dorp." link="https://fonts.google.com" image="/images/googlefonts.png"></mediaitem>
+            <mediaitem title="Apache" description="Apache is the web server used to host Dorp." link="https://apache.org" image="/images/apache.jpg"></mediaitem>
+            <mediaitem title="Red Hat" description="Dorp is run on a RHEL-based Docker Container." link="https://redhat.com" image="/images/redhat.png"></mediaitem>
         </section>
       </container>
     </div>
   </script>
 
-  <script type="text/x-template" id="page-products-framework">
+  <script type="text/x-template" id="page-products-plates">
     <div>
       <container>
         <section class="header" id="header">
-          <h1 class="title">DorpFramework</h1>
+          <h1 class="title">DorpPlates</h1>
+          <p>
+            DorpPlates is a extention of the Javascript Template System.
+          </p>
         </section>
-        <section id="content">
+        <section class="content">
         </section>
       </container>
     </div>
   </script>
 
   <script type="text/x-template" id="partial-dorp-products">
-    <div style="text-align:center">
+    <div class="text-center">
       <row>
         <template v-for="(product, index) in products">
           <dorp-product :product="product"></dorp-product>
@@ -74,7 +87,7 @@
   </script>
 
   <script type="text/x-template" id="component-dorp-product">
-    <div class="text-align:center">
+    <div class="text-center">
       <column span="four">
         <h3>{{product.name}}</h3>
         <p>{{product.description}}</p>

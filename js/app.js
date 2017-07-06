@@ -28,9 +28,37 @@ const routes = [{
       template: '#page-about'
     }
   }, {
-    path: '/products/framework',
+    path: '/products/plates',
     component: {
-      template: '#page-products-framework'
+      template: '#page-products-plates',
+      data: function() {
+        return {
+          helpers: [{
+              name: 'Variable',
+              code: `My Favorite color is {{favorite}}.`,
+              description: 'Variable'
+            },
+            {
+              name: 'If',
+              code: `<@
+  color
+{% else %}
+  colour
+{% endif %}`,
+              description: "The `if` and `else` helpers are used in conditional statements."
+            },
+            {
+              name: 'For',
+              code: `<ul>
+  {% for fruit in fruits %}
+    <li>{{fruit}}</li>
+  {% endfor %}
+</ul>`,
+              description: "The `for` helper is used in for loops."
+            },
+          ]
+        }
+      }
     }
   }
 ]
@@ -64,15 +92,23 @@ Vue.component('column', {
   props: ['span'],
   template: '<div :class="`${span} columns`"><slot></slot></div>'
 });
+Vue.component('icon', {
+  props: ['name'],
+  template: '<span :class="`fa fa-${name}`"></span>'
+});
+Vue.component('mediaitem', {
+  props: ['title', 'description', 'link', 'image'],
+  template: '<div class="media-item"><div class="media-image"><img :src="image" :alt="title" height="64" width="64" /></div><div class="media-text"><h4 style="margin-bottom:0">{{title}}</h4><p>{{description}}</p></div></div>'
+});
 Vue.component('dorp-products', {
   template: '#partial-dorp-products',
   data: function() {
     return {
       products: [{
-          id: 'framework',
-          name: 'DorpFramework',
-          description: 'The Dorp Web Framework',
-          link: '/products/framework'
+          id: 'plates',
+          name: 'DorpPlates',
+          description: 'The Dorp template engine',
+          link: '/products/plates'
         },
         {
           id: 'dom',
@@ -92,6 +128,9 @@ Vue.component('dorp-product', {
 // 4. Create and mount the root instance.
 // Make sure to inject the router with the router option to make the
 // whole app router-aware.
+
+Vue.use(VueMarkdown);
+
 const app = new Vue({
   router: router
 }).$mount('#app')
